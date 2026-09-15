@@ -1,10 +1,17 @@
-const vowels = "aeiou";
+export function countVowels(word) {
+    const vowels = "aeiou";
+    let count = 0;
+    for(const c of word.toLowerCase()) {
+        if(vowels.includes(c)) count++;
+    }
 
-const word = "everything";
-let count = 0;
+    return count;
 
-word.split('').forEach(letter => {
-    if(vowels.includes(letter)) count++;
-});
+}
 
-console.log(count);
+import assert from 'node:assert';
+assert.strictEqual(countVowels('EVERYTHING'), 3);
+assert.strictEqual(countVowels(''), 0);
+assert.strictEqual(countVowels('word'), 1);
+assert.strictEqual(countVowels('Assimilate'), 5);
+console.log('ok');
