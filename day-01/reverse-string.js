@@ -1,12 +1,15 @@
-const word = "elephant";
-
-function reverse(word) {
+export function reverseString(word) {
     let reversed = '';
-    wordArray = Array.from(word);
-    for(let i = word.length-1; i >= 0; i--) {
+    let wordArray = [...word];
+    for(let i = wordArray.length-1; i >= 0; i--) {
         reversed += wordArray[i];
     }
     return reversed;
 }
 
-console.log(reverse(word));
+
+import assert from 'node:assert';
+assert.strictEqual(reverseString(''), '');
+assert.strictEqual(reverseString('Elephant'), 'tnahpelE');
+assert.strictEqual(reverseString('ab👍'), '👍ba');
+console.log('ok');
