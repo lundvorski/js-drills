@@ -1,12 +1,21 @@
-const nums = [2,4,1,22,77,5343,3456,776];
-let largest = 0;
-let secondLargest = 0;
+export function secondLargest(nums) {
+    let largest = -Infinity;
+    let secondLargest = -Infinity;
 
-nums.forEach(x => {
-    if( largest < x) {
-        secondLargest = largest;
-        largest = x
-    } else if(secondLargest < x) secondLargest = x;
-})
+    for(const n of nums) {
+        if(largest < n) {
+            secondLargest = largest;
+            largest = n;
+        } else if(secondLargest < n && n != largest) secondLargest = n;
+    }
 
-console.log(secondLargest);
+    return secondLargest === -Infinity ? largest : secondLargest;
+}
+
+
+import assert from 'node:assert';
+assert.strictEqual(secondLargest([-5, -2, -10]), -5);
+assert.strictEqual(secondLargest([]), -Infinity);
+assert.strictEqual(secondLargest([7]), 7);
+assert.strictEqual(secondLargest([5, 5, 3]), 3);
+console.log('ok');
