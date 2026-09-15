@@ -1,7 +1,14 @@
-const array_nums = [1,6,13,14,55,65,3,4];
-let sum = 0;
-for(let i = 0; i < array_nums.length; i++) {
-    sum += array_nums[i];
+export function sum(nums) {
+    let sum = 0;
+    for(const n of nums) {
+        sum += n;
+    }
+    return sum;
 }
 
-console.log(sum);
+
+import assert from 'node:assert';
+assert.strictEqual(sum([1, 2, 3]), 6);
+assert.strictEqual(sum([]), 0);
+assert.strictEqual(sum([-1, 1]), 0);
+console.log('ok');
